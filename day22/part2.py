@@ -1,5 +1,5 @@
 bricks = []
-with open('input.txt') as inp: 
+with open('avishai.txt') as inp: 
     for line in inp:
         pos1, pos2 = line.strip().split('~')
         bricks.append((tuple([int(x) for x in pos1.split(',')]), tuple([int(x) for x in pos2.split(',')])))

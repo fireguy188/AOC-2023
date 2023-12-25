@@ -1,5 +1,5 @@
 graph = []
-with open('input.txt') as inp: 
+with open('test.txt') as inp: 
     for line in inp:
         graph.append(line.strip())
 
@@ -68,7 +68,7 @@ def better_ans(required_steps):
     return total
 
 # test = [better_ans(x) for x in range(0, 500+1, 5)]
-#test = [ans(x) for x in range(31)]
+# test = [ans(x) for x in range(0, 110+1, 11)]
 # differences = [test[i+1]-test[i] for i in range(len(test)-1)]
 # second_differences = [differences[i+1]-differences[i] for i in range(len(differences)-1)]
 # print(test)
@@ -96,11 +96,12 @@ def really_cool_ans(required_steps):
     # THE SECOND DIFFERENCE FUCKING SETTLES
     # Let's find the quadratic equation for generating elements
     a = 0.5 * second_differences[-1]
-
+    # ans(51), ans(62), ... ans(700)
     # b and c are a bit different, we don't just want the multiples of len(graph)
     # we want to be able to get answers for 1+multiple of len(graph) or 2+ etc.
-    difference = better_ans(steps+required_steps%len(graph)+len(graph)) - better_ans(steps+required_steps%len(graph))
+
     answer = better_ans(steps+required_steps%len(graph))
+    difference = better_ans(steps+required_steps%len(graph)+len(graph)) - answer
     b = difference - 3*a
     c = answer - a - b
     # so n = 1 gives the answer when required_steps = steps+required_steps%len(graph)
@@ -253,3 +254,4 @@ for row in range(len(graph)):
 # ... .O. OOO OOO
             
 # 26501365 = 5 * 11 * 481843
+            # 26501365 = 65 + 200200 * 131
